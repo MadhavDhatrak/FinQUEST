@@ -76,7 +76,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Success case
-        window.location.href = 'FS/success.html';
+        window.location.href = 'FS/success1.html';
+        
     });
 
     // Initialize values on page load
