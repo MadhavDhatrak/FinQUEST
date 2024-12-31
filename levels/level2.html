@@ -1,4 +1,4 @@
-/levels/level2.html
+2.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,103 +19,96 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 2rem;
         }
         .container {
             width: 100%;
-            max-width: 1200px;
-            padding: 2.5rem;
+            max-width: 1000px;
+            padding: 2rem;
             margin: 0 auto;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
         }
-
         .title {
-            font-size: 4.5rem;
             color:aqua;
             text-shadow: 0 0 10px rgba(0, 255, 0, 0.7);
             animation: glow 1.5s ease-in-out infinite alternate;
-            margin-bottom: 2rem;
+        }
+        .slider-container {
+            position: relative;
+            padding: 1rem 0;
+            margin-bottom: 1rem;
         }
         .slider {
+            -webkit-appearance: none;
             height: 16px !important;
             background: linear-gradient(90deg, #00ff00 0%, #006400 100%);
             border-radius: 8px;
             box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+            outline: none;
+            transition: all 0.3s ease;
         }
         .slider::-webkit-slider-thumb {
             -webkit-appearance: none;
-            width: 40px;
-            height: 40px;
+            width: 32px;
+            height: 32px;
             background: #00ff00;
-            border: 4px solid #fff;
+            border: 3px solid #fff;
             border-radius: 50%;
             cursor: pointer;
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
             transition: all 0.3s ease;
         }
         .slider::-webkit-slider-thumb:hover {
             transform: scale(1.1);
-            box-shadow: 0 0 25px rgba(0, 255, 0, 0.7);
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.7);
         }
-        @keyframes glow {
-            from { text-shadow: 0 0 10px #00ff00; }
-            to { text-shadow: 0 0 30px #00ff00; }
+        .slider::-webkit-slider-thumb:active {
+            transform: scale(0.95);
         }
-        @media (max-width: 768px) {
-            .title {
-                font-size: 3rem;
+        .slider:hover {
+            height: 18px !important;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
+        }
+        .slider-value {
+            position: absolute;
+            top: -30px;
+            background: rgba(10, 21, 10, 0.059);
+            border: 1px solid #00ff00;
+            padding: 4px 8px;
+            border-radius: 4px;
+            transform: translateX(-50%);
+            transition: opacity 0.3s;
+            color: #fff;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .slider:hover + .slider-value {
+            opacity: 1;
+        }
+        .game-info-button {
+            position: fixed;
+            background: rgba(0, 255, 0, 0.2);
+            border: 2px solid #00ff00;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 100;
+            padding: 0.75rem;
+        }
+        @media (min-width: 768px) {
+            .game-info-button {
+                left: 2rem;
+                top: 50%;
+                transform: translateY(-50%);
             }
-            .container {
-                padding: 1.5rem;
+            .game-info-button:hover {
+                background: rgba(0, 255, 0, 0.3);
+                transform: translateY(-50%) scale(1.1);
             }
         }
-
-        .game-info-button {
-        position: fixed;
-        background: rgba(0, 255, 0, 0.2);
-        border: 2px solid #00ff00;
-        border-radius: 12px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        z-index: 100;
-        padding: 0.75rem;
-    }
-
-    /* Desktop positioning */
-    @media (min-width: 768px) {
-        .game-info-button {
-            left: 2rem;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-        .game-info-button:hover {
-            background: rgba(0, 255, 0, 0.3);
-            transform: translateY(-50%) scale(1.1);
-        }
-    }
-
-    /* Mobile positioning */
-    @media (max-width: 767px) {
-        .game-info-button {
-            left: 1rem;
-            top: 1rem;
-            padding: 0.5rem;
-        }
-        .game-info-button:hover {
-            background: rgba(0, 255, 0, 0.3);
-            transform: scale(1.1);
-        }
-        .game-info-button span {
-            font-size: 1.25rem;
-        }
-    }
-    
-        .game-info-button:hover {
-            background: rgba(0, 255, 0, 0.3);
-            transform: translateY(-50%) scale(1.1);
+        @media (max-width: 767px) {
+            .game-info-button {
+                left: 1rem;
+                top: 1rem;
+            }
         }
         .modal {
             display: none;
@@ -128,125 +121,95 @@
             display: flex;
             animation: fadeIn 0.3s ease-out;
         }
-        .modal-content {
-            background: #000;
-            border: 2px solid #00ff00;
-            border-radius: 12px;
-            padding: 2rem;
-            max-width: 600px;
-            margin: auto;
-            transform: translateY(20px);
-            opacity: 0;
-            transition: all 0.3s ease;
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #00ff00; }
+            to { text-shadow: 0 0 20px #00ff00; }
         }
-        .modal.show .modal-content {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
     </style>
 </head>
 <body>
     <button class="game-info-button" onclick="toggleGameInfo()">
-        <span class="text-2xl">❔</span>
+        <span class="text-2xl text-green-400">❔</span>
     </button>
 
     <div id="gameInfoModal" class="modal">
-        <div class="modal-content">
+        <div class="bg-black border-2 border-green-500 rounded-lg p-8 m-auto max-w-lg">
             <h3 class="text-2xl text-green-400 mb-6">Level 2: Savings Challenge</h3>
             <div class="space-y-4 text-gray-300">
-                <p>🎯 <span class="text-green-400">Goal:</span> Allocate $500 across savings categories</p>
+                <p>🎯 Goal: Save $500 across categories</p>
                 <div class="pl-4 space-y-2">
-                    <p>💰 Emergency Fund - Minimum: $200</p>
-                    <p>🎯 Investment - Minimum: $150</p>
-                    <p>🏖️ Vacation - Minimum: $50</p>
+                    <p>💰 Emergency Fund: Min $200</p>
+                    <p>🎯 Investment: Min $150</p>
+                    <p>🏖️ Vacation: Min $50</p>
                 </div>
-                <p class="text-yellow-400 mt-4">Total must equal exactly $500!</p>
+                <p class="text-yellow-400">Total must equal $500!</p>
             </div>
             <button onclick="toggleGameInfo()" 
-                    class="mt-6 bg-green-600 hover:bg-green-700 text-white 
-                           py-2 px-4 rounded text-sm transition-all duration-300">
+                    class="mt-6 bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded">
                 Got it!
             </button>
         </div>
     </div>
 
-
-    <div class="container ">
-        <h1 class="title text-center">LEVEL 2</h1>
-        <h2 class="text-3xl text-center text-green-400 mb-16">Savings Challenge: $500 Goal</h2>
-        <div class="text-center mb-12">
-            <span class="text-3xl text-yellow-400">Remaining: $<span id="remaining">500</span></span>
+    <div class="container">
+        <h1 class="title text-4xl md:text-6xl text-center mb-12">LEVEL 2</h1>
+        <h2 class="text-2xl text-center text-green-400 mb-8"> Learn About Savings Challenge </h2>
+        
+        <div class="text-center mb-8">
+            <span class="text-2xl text-yellow-400">Remaining: $<span id="remaining">500</span></span>
         </div>
 
-        <div class="space-y-16 mb-16">
+        <div class="space-y-12 mb-12">
             <div>
-                <label class="block mb-8 text-2xl text-green-300">💰 Emergency Fund</label>
-                <input type="range" id="emergency" min="0" max="300" value="0" class="slider w-full">
-                <div class="flex justify-between mt-6">
-                    <span class="text-xl text-green-400">$<span id="emergencyValue">0</span></span>
-                    <span class="text-xl text-green-400">$300</span>
+                <label class="block mb-6 text-xl text-green-300">💰 Emergency Fund</label>
+                <div class="slider-container">
+                    <input type="range" id="emergency" min="0" max="300" value="0" class="slider w-full">
+                    <div class="slider-value">$<span id="emergencyValueTooltip">0</span></div>
+                    <div class="flex justify-between mt-4">
+                        <span class="text-green-400">$<span id="emergencyValue">0</span></span>
+                        <span class="text-green-400">$300</span>
+                    </div>
                 </div>
             </div>
             
             <div>
-                <label class="block mb-8 text-2xl text-green-300">🎯 Investment</label>
-                <input type="range" id="investment" min="0" max="200" value="0" class="slider w-full">
-                <div class="flex justify-between mt-6">
-                    <span class="text-xl text-green-400">$<span id="investmentValue">0</span></span>
-                    <span class="text-xl text-green-400">$200</span>
+                <label class="block mb-6 text-xl text-green-300">🎯 Investment</label>
+                <div class="slider-container">
+                    <input type="range" id="investment" min="0" max="200" value="0" class="slider w-full">
+                    <div class="slider-value">$<span id="investmentValueTooltip">0</span></div>
+                    <div class="flex justify-between mt-4">
+                        <span class="text-green-400">$<span id="investmentValue">0</span></span>
+                        <span class="text-green-400">$200</span>
+                    </div>
                 </div>
             </div>
 
             <div>
-                <label class="block mb-8 text-2xl text-green-300">🏖️ Vacation Fund</label>
-                <input type="range" id="vacation" min="0" max="100" value="0" class="slider w-full">
-                <div class="flex justify-between mt-6">
-                    <span class="text-xl text-green-400">$<span id="vacationValue">0</span></span>
-                    <span class="text-xl text-green-400">$100</span>
+                <label class="block mb-6 text-xl text-green-300">🏖️ Vacation</label>
+                <div class="slider-container">
+                    <input type="range" id="vacation" min="0" max="100" value="0" class="slider w-full">
+                    <div class="slider-value">$<span id="vacationValueTooltip">0</span></div>
+                    <div class="flex justify-between mt-4">
+                        <span class="text-green-400">$<span id="vacationValue">0</span></span>
+                        <span class="text-green-400">$100</span>
+                    </div>
                 </div>
             </div>
         </div>
 
         <button id="submit-savings" 
-                class="w-full py-6 text-2xl bg-green-600 
-                ver:bg-green-700 rounded-lg 
+                class="w-full py-4 text-xl bg-green-600 hover:bg-green-700 rounded-lg 
                        transition-all duration-300 hover:shadow-lg hover:shadow-green-500/50">
             SUBMIT SAVINGS
         </button>
     </div>
 
     <script>
-    function toggleGameInfo() {
-        const modal = document.getElementById('gameInfoModal');
-        const modalContent = modal.querySelector('.modal-content');
-
-        if (modal.classList.contains('show')) {
-            modalContent.style.opacity = '0';
-            modalContent.style.transform = 'translateY(20px)';
-            setTimeout(() => {
-                modal.classList.remove('show');
-            }, 300);
-        } else {
-            modal.classList.add('show');
-            setTimeout(() => {
-                modalContent.style.opacity = '1';
-                modalContent.style.transform = 'translateY(0)';
-            }, 10);
+        function toggleGameInfo() {
+            const modal = document.getElementById('gameInfoModal');
+            modal.classList.toggle('show');
         }
-    }
-
-    // Close modal when clicking outside
-    document.getElementById('gameInfoModal').addEventListener('click', (e) => {
-        if (e.target.id === 'gameInfoModal') {
-            toggleGameInfo();
-        }
-    });
-  </script>
+    </script>
     <script src="../logic/level2.js"></script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Budget constants
+    // Game constants
     const TOTAL_BUDGET = 1000;
     const MINIMUM_VALUES = {
         rent: 300,
@@ -11,10 +11,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Get DOM elements
     const sliders = ['rent', 'groceries', 'transport', 'savings'];
     const elements = {};
+    
     sliders.forEach(id => {
         elements[id] = {
             slider: document.getElementById(id),
-            value: document.getElementById(`${id}Value`)
+            value: document.getElementById(`${id}Value`),
+            tooltip: document.getElementById(`${id}ValueTooltip`)
         };
     });
 
@@ -22,28 +24,41 @@ document.addEventListener('DOMContentLoaded', () => {
     const messageElement = document.getElementById('message');
     const submitButton = document.getElementById('submit-budget');
 
-    // Update values and remaining budget
     function updateValues() {
         let total = 0;
         sliders.forEach(id => {
             const value = parseInt(elements[id].slider.value);
             elements[id].value.textContent = value;
+            elements[id].tooltip.textContent = value;
             total += value;
         });
         
         const remaining = TOTAL_BUDGET - total;
         remainingElement.textContent = remaining;
-        
-        // Visual feedback
+
+        // Update UI feedback
         if (remaining < 0) {
             remainingElement.style.color = '#ff0000';
             messageElement.textContent = 'Over budget!';
+            messageElement.style.color = '#ff0000';
         } else if (remaining > 0) {
             remainingElement.style.color = '#ffff00';
-            messageElement.textContent = `$${remaining} left to allocate`;
+            messageElement.textContent = `$${remaining} left to budget`;
+            messageElement.style.color = '#ffff00';
         } else {
             remainingElement.style.color = '#00ff00';
-            messageElement.textContent = 'Budget allocated!';
+            messageElement.textContent = 'Ready to submit!';
+            messageElement.style.color = '#00ff00';
+        }
+
+        // Check minimum requirements
+        for (const [category, minimum] of Object.entries(MINIMUM_VALUES)) {
+            const value = parseInt(elements[category].slider.value);
+            if (value < minimum) {
+                messageElement.textContent = `${category} needs at least $${minimum}`;
+                messageElement.style.color = '#ff0000';
+                break;
+            }
         }
     }
 
@@ -77,7 +92,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Success case
         window.location.href = 'FS/success1.html';
-        
     });
 
     // Initialize values on page load

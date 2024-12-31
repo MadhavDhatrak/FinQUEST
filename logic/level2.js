@@ -2,9 +2,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Game constants
     const TOTAL_SAVINGS = 500;
     const MINIMUM_VALUES = {
-        emergency: 200,    // Emergency fund minimum
-        investment: 150,   // Investment minimum
-        vacation: 50       // Vacation minimum
+        emergency: 200,
+        investment: 150,
+        vacation: 50
     };
 
     // Get DOM elements
@@ -14,7 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
     sliders.forEach(id => {
         elements[id] = {
             slider: document.getElementById(id),
-            value: document.getElementById(`${id}Value`)
+            value: document.getElementById(`${id}Value`),
+            tooltip: document.getElementById(`${id}ValueTooltip`)
         };
     });
 
@@ -22,52 +23,34 @@ document.addEventListener('DOMContentLoaded', () => {
     const messageElement = document.getElementById('message');
     const submitButton = document.getElementById('submit-savings');
 
-    // Update requirements display
-    function updateRequirements() {
-        Object.entries(MINIMUM_VALUES).forEach(([category, minimum]) => {
-            const value = parseInt(elements[category].slider.value);
-            const reqElement = document.getElementById(`${category}-req`);
-            const valueSpan = reqElement.querySelector('span');
-            valueSpan.textContent = `$${value}`;
-            
-            if (value >= minimum) {
-                reqElement.classList.remove('text-gray-400');
-                reqElement.classList.add('text-green-400');
-            } else {
-                reqElement.classList.remove('text-green-400');
-                reqElement.classList.add('text-gray-400');
-            }
-        });
-    }
-
-    // Update values and validate
     function updateValues() {
         let total = 0;
         sliders.forEach(id => {
             const value = parseInt(elements[id].slider.value);
             elements[id].value.textContent = value;
+            elements[id].tooltip.textContent = value;
             total += value;
         });
         
         const remaining = TOTAL_SAVINGS - total;
         remainingElement.textContent = remaining;
 
-        // Update UI feedback based on allocation
+        // Update UI feedback
         if (remaining < 0) {
             remainingElement.style.color = '#ff0000';
             messageElement.textContent = 'Over your savings limit!';
             messageElement.style.color = '#ff0000';
         } else if (remaining > 0) {
             remainingElement.style.color = '#ffff00';
-            messageElement.textContent = `$${remaining} left to save`;
+            messageElement.textContent = `$${remaining} more to save`;
             messageElement.style.color = '#ffff00';
         } else {
             remainingElement.style.color = '#00ff00';
-            messageElement.textContent = 'Ready to submit your savings plan!';
+            messageElement.textContent = 'Ready to submit!';
             messageElement.style.color = '#00ff00';
         }
 
-        // Check if any minimum requirements are not met
+        // Check minimum requirements
         for (const [category, minimum] of Object.entries(MINIMUM_VALUES)) {
             const value = parseInt(elements[category].slider.value);
             if (value < minimum) {
@@ -76,8 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 break;
             }
         }
-
-        updateRequirements();
     }
 
     // Add event listeners for real-time updates
@@ -94,12 +75,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const total = Object.values(values).reduce((sum, val) => sum + val, 0);
 
+        // Validate total savings
         if (total !== TOTAL_SAVINGS) {
             window.location.href = 'FS/fail2.html';
             return;
         }
 
-        // Validate minimum requirements
+        // Check minimum requirements
         for (const [category, minimum] of Object.entries(MINIMUM_VALUES)) {
             if (values[category] < minimum) {
                 window.location.href = 'FS/fail2.html';
