@@ -1,20 +1,157 @@
+/index.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FinLit Quest</title>
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinQuest - Financial Literacy Game</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        body {
+            font-family: 'Press Start 2P', cursive;
+            background-color: #000;
+            background-image: 
+                linear-gradient(to right, rgba(0, 255, 0, 0.15) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 255, 0, 0.15) 1px, transparent 1px);
+            background-size: 50px 50px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .title {
+            color: #00ff00;
+            text-shadow: 0 0 10px rgba(0, 255, 0, 0.7);
+            animation: glow 1.5s ease-in-out infinite alternate;
+        }
+        .level-card {
+            background: rgba(0, 255, 0, 0.1);
+            border: 2px solid #00ff00;
+            transition: all 0.3s ease;
+        }
+        .level-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+        }
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #00ff00; }
+            to { text-shadow: 0 0 20px #00ff00; }
+        }
+    </style>
 </head>
-<body class="bg-gray-100 min-h-screen flex items-center justify-center">
-  <div id="game-container" class="w-full max-w-4xl p-6 bg-white shadow-md rounded-lg text-center">
-    <h1 class="text-3xl font-bold mb-6">🎮 Welcome to FinLit Quest</h1>
-    <p class="mb-4">Learn financial literacy through fun and engaging levels.</p>
-    <a href="levels/level1.html" 
-       class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">
-      Start Game
-    </a>
+<body>
+    <!-- Header -->
+    <header class="py-8 text-center">
+        <h1 class="title text-4xl md:text-6xl mb-4">FinQuest</h1>
+        <p class="text-green-400 text-lg md:text-xl">Master Your Financial Future</p>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Level 1 Card -->
+            <div class="level-card rounded-lg p-6 text-center">
+                <h2 class="text-green-400 text-xl mb-4">Level 1</h2>
+                <p class="text-gray-400 mb-4">Budget Your First Paycheck</p>
+                <a href="levels/level1.html" 
+                   class="inline-block bg-green-600 hover:bg-green-700 text-white 
+                          py-2 px-4 rounded transition-all duration-300">
+                    Start Level
+                </a>
+            </div>
+
+            <!-- Level 2 Card -->
+            <div class="level-card rounded-lg p-6 text-center">
+                <h2 class="text-green-400 text-xl mb-4">Level 2</h2>
+                <p class="text-gray-400 mb-4">Smart Savings Strategy</p>
+                <a href="levels/level2.html" 
+                   class="inline-block bg-green-600 hover:bg-green-700 text-white 
+                          py-2 px-4 rounded transition-all duration-300">
+                    Start Level
+                </a>
+            </div>
+
+            <!-- Level 3 Card -->
+            <div class="level-card rounded-lg p-6 text-center">
+                <h2 class="text-green-400 text-xl mb-4">Level 3</h2>
+                <p class="text-gray-400 mb-4">Basic Investment</p>
+                <a href="levels/level3.html" 
+                   class="inline-block bg-green-600 hover:bg-green-700 text-white 
+                          py-2 px-4 rounded transition-all duration-300">
+                    Start Level
+                </a>
+            </div>
+
+            <!-- Level 4 Card -->
+            <div class="level-card rounded-lg p-6 text-center">
+                <h2 class="text-green-400 text-xl mb-4">Level 4</h2>
+                <p class="text-gray-400 mb-4">Advanced Investment</p>
+                <a href="levels/level4.html" 
+                   class="inline-block bg-green-600 hover:bg-green-700 text-white 
+                          py-2 px-4 rounded transition-all duration-300">
+                    Start Level
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <!-- ... existing header and main content ... -->
+
+<!-- Enhanced Footer -->
+<footer class="bg-black bg-opacity-50 py-12 mt-8 border-t border-green-800">
+  <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+          <!-- Game Features -->
+          <div class="text-center md:text-left">
+              <h3 class="text-green-400 text-lg mb-4">Game Features</h3>
+              <ul class="space-y-2 text-gray-400 text-sm">
+                  <li>🎮 Interactive Learning</li>
+                  <li>💰 Real-world Finance</li>
+                  <li>📈 Progress Tracking</li>
+                  <li>🏆 Achievement System</li>
+              </ul>
+          </div>
+          
+          <!-- Quick Links -->
+          <div class="text-center">
+              <h3 class="text-green-400 text-lg mb-4">Quick Links</h3>
+              <ul class="space-y-2 text-gray-400 text-sm">
+                  <li><a href="#" class="hover:text-green-400 transition-colors">How to Play</a></li>
+                  <li><a href="#" class="hover:text-green-400 transition-colors">About FinQuest</a></li>
+                  <li><a href="#" class="hover:text-green-400 transition-colors">Contact</a></li>
+              </ul>
+          </div>
+          
+          <!-- Stats -->
+          <div class="text-center md:text-right">
+              <h3 class="text-green-400 text-lg mb-4">Game Stats</h3>
+              <ul class="space-y-2 text-gray-400 text-sm">
+                  <li>🎯 4 Unique Levels</li>
+                  <li>⭐ Multiple Challenges</li>
+                  <li>📚 Financial Education</li>
+              </ul>
+          </div>
+      </div>
+      
+      <!-- Bottom Bar -->
+      <div class="pt-8 border-t border-green-900 text-center">
+          <div class="flex justify-center space-x-6 mb-4">
+              <a href="#" class="text-gray-400 hover:text-green-400 transition-colors">
+                  <span class="text-2xl">📱</span>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-green-400 transition-colors">
+                  <span class="text-2xl">💻</span>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-green-400 transition-colors">
+                  <span class="text-2xl">📧</span>
+              </a>
+          </div>
+          <p class="text-gray-500 text-xs">
+              © 2024 FinQuest - Empowering Financial Literacy Through Gaming
+          </p>
+      </div>
   </div>
+</footer>
 </body>
 </html>

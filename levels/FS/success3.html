@@ -1,0 +1,57 @@
+3.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment Success</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        body {
+            font-family: 'Press Start 2P', cursive;
+            background-color: #000;
+            background-image: 
+                linear-gradient(to right, rgba(0, 255, 0, 0.15) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 255, 0, 0.15) 1px, transparent 1px);
+            background-size: 50px 50px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .title {
+            color: #00ff00;
+            text-shadow: 0 0 10px rgba(0, 255, 0, 0.7);
+            animation: glow 1.5s ease-in-out infinite alternate;
+        }
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #00ff00; }
+            to { text-shadow: 0 0 20px #00ff00; }
+        }
+    </style>
+</head>
+<body>
+    <div class="text-center px-4">
+        <h1 class="title text-4xl md:text-6xl mb-8">GREAT INVESTMENT!</h1>
+        <div id="stats" class="space-y-4 text-xl text-green-400 mb-12"></div>
+        <a href="../level4.html" 
+           class="inline-block bg-green-600 hover:bg-green-700 text-white 
+                  py-4 px-8 rounded-lg text-lg transition-all duration-300">
+            NEXT LEVEL →
+        </a>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const investment = sessionStorage.getItem('investment');
+            const returns = sessionStorage.getItem('return');
+            const stats = document.getElementById('stats');
+            
+            stats.innerHTML = `
+                <p>Total Investment: $${investment}</p>
+                <p>Expected Returns: $${returns}</p>
+            `;
+        });
+    </script>
+</body>
+</html>

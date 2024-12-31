@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 4 - Advanced Investment</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        body {
+            font-family: 'Press Start 2P', cursive;
+            background-color: #000;
+            background-image: 
+                linear-gradient(to right, rgba(0, 255, 0, 0.15) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 255, 0, 0.15) 1px, transparent 1px);
+            background-size: 50px 50px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            padding: 2rem;
+        }
+        .title {
+            color: #00ff00;
+            text-shadow: 0 0 10px rgba(0, 255, 0, 0.7);
+            animation: glow 1.5s ease-in-out infinite alternate;
+        }
+        .stock-card {
+            background: rgba(0, 255, 0, 0.1);
+            border: 2px solid #00ff00;
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .stock-card:hover {
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+            transform: translateY(-5px);
+        }
+        .input-field {
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid #00ff00;
+            color: #00ff00;
+            padding: 0.5rem;
+            border-radius: 8px;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        .input-field:focus {
+            outline: none;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+        }
+        .game-info-button {
+            position: fixed;
+            background: rgba(0, 255, 0, 0.2);
+            border: 2px solid #00ff00;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 100;
+            padding: 0.75rem;
+        }
+        @media (min-width: 768px) {
+            .game-info-button {
+                left: 2rem;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+            .game-info-button:hover {
+                background: rgba(0, 255, 0, 0.3);
+                transform: translateY(-50%) scale(1.1);
+            }
+        }
+        @media (max-width: 767px) {
+            .game-info-button {
+                left: 1rem;
+                top: 1rem;
+            }
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+        }
+        .modal.show {
+            display: flex;
+            animation: fadeIn 0.3s ease-out;
+        }
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #00ff00; }
+            to { text-shadow: 0 0 20px #00ff00; }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <button class="game-info-button" onclick="toggleGameInfo()">
+        <span class="text-2xl text-green-400">❔</span>
+    </button>
+
+    <div id="gameInfoModal" class="modal">
+        <div class="bg-black border-2 border-green-500 rounded-lg p-8 m-auto max-w-lg">
+            <h3 class="text-2xl text-green-400 mb-6">Advanced Investment Rules</h3>
+            <div class="space-y-4 text-gray-300">
+                <p>🎯 Goal: Invest $1000 wisely</p>
+                <div class="pl-4 space-y-2">
+                    <p>📈 Must invest in at least 3 stocks</p>
+                    <p>⚠️ 10% penalty if over budget</p>
+                    <p>💰 Minimum investment: $500</p>
+                    <p>📉 Stocks can go up or down</p>
+                </div>
+            </div>
+            <button onclick="toggleGameInfo()" 
+                    class="mt-6 bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded">
+                Got it!
+            </button>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1 class="title text-4xl md:text-6xl text-center mb-12">LEVEL 4</h1>
+        <h2 class="text-2xl text-center text-green-400 mb-8">Advanced Investment</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            <div class="stock-card">
+                <h3 class="text-xl text-green-400 mb-4">Stock A</h3>
+                <p class="text-gray-400 mb-2">Low Risk Investment</p>
+                <p class="text-green-400 mb-4">$100/share | +5%</p>
+                <input type="number" id="stockA" class="input-field" placeholder="Shares" min="0">
+            </div>
+
+            <div class="stock-card">
+                <h3 class="text-xl text-green-400 mb-4">Stock B</h3>
+                <p class="text-gray-400 mb-2">Medium Risk</p>
+                <p class="text-green-400 mb-4">$200/share | +15%</p>
+                <input type="number" id="stockB" class="input-field" placeholder="Shares" min="0">
+            </div>
+
+            <div class="stock-card">
+                <h3 class="text-xl text-green-400 mb-4">Stock C</h3>
+                <p class="text-gray-400 mb-2">High Risk</p>
+                <p class="text-green-400 mb-4">$300/share | +30%</p>
+                <input type="number" id="stockC" class="input-field" placeholder="Shares" min="0">
+            </div>
+
+            <div class="stock-card">
+                <h3 class="text-xl text-green-400 mb-4">Stock D</h3>
+                <p class="text-gray-400 mb-2">Very High Risk</p>
+                <p class="text-green-400 mb-4">$400/share | +40%</p>
+                <input type="number" id="stockD" class="input-field" placeholder="Shares" min="0">
+            </div>
+
+            <div class="stock-card">
+                <h3 class="text-xl text-green-400 mb-4">Stock E</h3>
+                <p class="text-gray-400 mb-2">Maximum Risk</p>
+                <p class="text-green-400 mb-4">$500/share | +50%</p>
+                <input type="number" id="stockE" class="input-field" placeholder="Shares" min="0">
+            </div>
+
+            <div class="stock-card">
+                <h3 class="text-xl text-green-400 mb-4">Stock F</h3>
+                <p class="text-gray-400 mb-2">Ultra High Risk</p>
+                <p class="text-green-400 mb-4">$600/share | +60%</p>
+                <input type="number" id="stockF" class="input-field" placeholder="Shares" min="0">
+            </div>
+        </div>
+
+        <div class="text-center mb-8">
+            <span class="text-2xl text-yellow-400">Investment Total: $<span id="total">0</span></span>
+        </div>
+
+        <button id="invest-button" 
+                class="w-full py-4 text-xl bg-green-600 hover:bg-green-700 rounded-lg 
+                       transition-all duration-300 hover:shadow-lg hover:shadow-green-500/50">
+            INVEST NOW
+        </button>
+        <p id="message" class="mt-6 text-center text-yellow-400 text-xl"></p>
+    </div>
+
+    <script>
+        function toggleGameInfo() {
+            const modal = document.getElementById('gameInfoModal');
+            modal.classList.toggle('show');
+        }
+    </script>
+    <script src="../logic/level4.js"></script>
+</body>
+</html>

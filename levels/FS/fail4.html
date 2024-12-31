@@ -1,0 +1,51 @@
+fail4.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment Failed</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        body {
+            font-family: 'Press Start 2P', cursive;
+            background-color: #000;
+            background-image: 
+                linear-gradient(to right, rgba(255, 0, 0, 0.15) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 0, 0, 0.15) 1px, transparent 1px);
+            background-size: 50px 50px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .title {
+            color: #ff0000;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+            animation: glowRed 1.5s ease-in-out infinite alternate;
+        }
+        @keyframes glowRed {
+            from { text-shadow: 0 0 10px #ff0000; }
+            to { text-shadow: 0 0 20px #ff0000; }
+        }
+    </style>
+</head>
+<body>
+    <div class="text-center px-4">
+        <h1 class="title text-4xl md:text-6xl mb-8">INVESTMENT FAILED!</h1>
+        <p class="text-red-400 text-xl mb-8">Review your investment strategy!</p>
+        <div class="space-y-4 text-gray-400 mb-8">
+            <p>💡 Invest between $500 - $1000</p>
+            <p>📈 Invest in at least 3 different stocks</p>
+            <p>⚠️ Watch out for the over-budget penalty!</p>
+            <p>📊 Diversify your portfolio wisely</p>
+        </div>
+        <a href="../level4.html" 
+           class="inline-block bg-red-600 hover:bg-red-700 text-white 
+                  py-4 px-8 rounded-lg text-lg transition-all duration-300">
+            TRY AGAIN
+        </a>
+    </div>
+</body>
+</html>
