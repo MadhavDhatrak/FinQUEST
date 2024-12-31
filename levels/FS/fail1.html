@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Failed</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        body {
+            font-family: 'Press Start 2P', cursive;
+            background-color: #000;
+            background-image: 
+                linear-gradient(to right, rgba(255, 0, 0, 0.15) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 0, 0, 0.15) 1px, transparent 1px);
+            background-size: 50px 50px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            overflow-x: hidden;
+        }
+        .title {
+            color: #ff0000;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+            animation: glowRed 1.5s ease-in-out infinite alternate;
+        }
+        .fail-container {
+            animation: shake 0.5s ease-in-out;
+        }
+        .retry-button, .tips-button {
+            animation: pulse 2s infinite;
+            transition: all 0.3s ease;
+        }
+        .retry-button:hover, .tips-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            background: #000;
+            border: 2px solid #ff0000;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
+        }
+        .modal.show {
+            display: block;
+            animation: modalIn 0.3s ease-out;
+        }
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 999;
+            backdrop-filter: blur(3px);
+        }
+        @keyframes glowRed {
+            from { text-shadow: 0 0 10px #ff0000; }
+            to { text-shadow: 0 0 20px #ff0000, 0 0 30px #ff0000; }
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 0, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); }
+        }
+        @keyframes modalIn {
+            from { opacity: 0; transform: translate(-50%, -45%); }
+            to { opacity: 1; transform: translate(-50%, -50%); }
+        }
+    </style>
+</head>
+<body>
+    <div class="fail-container text-center px-4">
+        <h1 class="title text-4xl md:text-6xl mb-8">💀 BUDGET FAILED!</h1>
+        
+        <div class="space-y-6 md:space-y-8 mb-12">
+            <p class="text-red-400 text-lg md:text-2xl">Your Budget Needs Work!</p>
+            <p class="text-gray-300 text-sm md:text-lg">Remember to allocate enough for essential expenses.</p>
+        </div>
+
+        <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
+            <a href="../level1.html" 
+               class="retry-button inline-block bg-red-600 hover:bg-red-700 text-white 
+                      py-4 px-8 rounded-lg text-lg md:text-xl font-bold">
+                TRY AGAIN
+            </a>
+            <button onclick="toggleTips()" 
+                    class="tips-button inline-block bg-gray-700 hover:bg-gray-600 text-white 
+                           py-4 px-8 rounded-lg text-lg md:text-xl font-bold">
+                BUDGET TIPS
+            </button>
+        </div>
+    </div>
+
+    <div id="modalOverlay" class="modal-overlay" onclick="toggleTips()"></div>
+
+    <div id="tipsModal" class="modal w-11/12 max-w-lg">
+        <h2 class="text-red-400 text-xl mb-6">💡 Budget Tips</h2>
+        <ul class="text-gray-300 text-sm space-y-4">
+            <li>🏠 Rent should be at least $300</li>
+            <li>🍎 Groceries need minimum $200</li>
+            <li>🚗 Transportation requires $100</li>
+            <li>💰 Don't forget savings of $100</li>
+        </ul>
+        <button onclick="toggleTips()" 
+                class="mt-6 bg-red-600 hover:bg-red-700 text-white 
+                       py-2 px-4 rounded text-sm">
+            Close
+        </button>
+    </div>
+
+    <script>
+        function toggleTips() {
+            const modal = document.getElementById('tipsModal');
+            const overlay = document.getElementById('modalOverlay');
+            modal.classList.toggle('show');
+            overlay.style.display = overlay.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+</body>
+</html>

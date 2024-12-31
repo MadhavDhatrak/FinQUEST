@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 1 - Budget Your First Paycheck</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        body {
+            font-family: 'Press Start 2P', cursive;
+            background-color: #000;
+            background-image: 
+                linear-gradient(to right, rgba(0, 255, 0, 0.15) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 255, 0, 0.15) 1px, transparent 1px);
+            background-size: 50px 50px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            width: 100%;
+            max-width: 800px;
+            padding: 2rem;
+        }
+        .title {
+            color: #00ff00;
+            text-shadow: 0 0 10px rgba(0, 255, 0, 0.7);
+            animation: glow 1.5s ease-in-out infinite alternate;
+        }
+        .slider {
+            height: 12px !important;
+            background: linear-gradient(90deg, #00ff00 0%, #006400 100%);
+            border-radius: 6px;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+        }
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 30px;
+            height: 30px;
+            background: #00ff00;
+            border: 3px solid #fff;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #00ff00; }
+            to { text-shadow: 0 0 20px #00ff00; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title text-6xl text-center mb-16">LEVEL 1</h1>
+        <h2 class="text-2xl text-center text-green-400 mb-12">Budget Your First Paycheck</h2>
+        
+        <div class="text-center mb-8">
+            <span class="text-2xl text-yellow-400">Remaining: $<span id="remaining">1000</span></span>
+        </div>
+
+        <div class="space-y-12 mb-12">
+            <div>
+                <label class="block mb-6 text-xl text-green-300">🏠 Rent</label>
+                <input type="range" id="rent" min="0" max="1000" value="0" class="slider w-full">
+                <div class="flex justify-between mt-4">
+                    <span class="text-green-400">$<span id="rentValue">0</span></span>
+                    <span class="text-green-400"></span>
+                </div>
+            </div>
+            
+            <div>
+                <label class="block mb-6 text-xl text-green-300">🍎 Groceries</label>
+                <input type="range" id="groceries" min="0" max="500" value="0" class="slider w-full">
+                <div class="flex justify-between mt-4">
+                    <span class="text-green-400">$<span id="groceriesValue">0</span></span>
+                    <span class="text-green-400">$500</span>
+                </div>
+            </div>
+
+            <div>
+                <label class="block mb-6 text-xl text-green-300">🚗 Transport</label>
+                <input type="range" id="transport" min="0" max="300" value="0" class="slider w-full">
+                <div class="flex justify-between mt-4">
+                    <span class="text-green-400">$<span id="transportValue">0</span></span>
+                    <span class="text-green-400">$300</span>
+                </div>
+            </div>
+
+            <div>
+                <label class="block mb-6 text-xl text-green-300">💰 Savings</label>
+                <input type="range" id="savings" min="0" max="400" value="0" class="slider w-full">
+                <div class="flex justify-between mt-4">
+                    <span class="text-green-400">$<span id="savingsValue">0</span></span>
+                    <span class="text-green-400">$400</span>
+                </div>
+            </div>
+        </div>
+
+        <button id="submit-budget" class="w-full py-4 text-xl bg-green-600 hover:bg-green-700 rounded-lg">
+            SUBMIT BUDGET
+        </button>
+        <p id="message" class="mt-4 text-center text-yellow-400"></p>
+    </div>
+    <script src="../logic/level1.js"></script>
+</body>
+</html>
