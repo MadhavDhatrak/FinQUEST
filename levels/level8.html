@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 8 - Real Estate Investment</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        body {
+            font-family: 'Press Start 2P', cursive;
+            background-color: #000;
+            background-image: 
+                linear-gradient(to right, rgba(0, 255, 0, 0.15) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 255, 0, 0.15) 1px, transparent 1px);
+            background-size: 50px 50px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container { max-width: 800px; padding: 1.5rem; }
+        .title {
+            color: #00ff00;
+            text-shadow: 0 0 10px rgba(0, 255, 0, 0.7);
+            animation: glow 1.5s ease-in-out infinite alternate;
+        }
+        .slider-container { position: relative; padding: 1rem 0; }
+        .slider {
+            -webkit-appearance: none;
+            height: 16px;
+            background: linear-gradient(90deg, #00ff00 0%, #006400 100%);
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+            outline: none;
+        }
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 32px;
+            height: 32px;
+            background: #00ff00;
+            border: 3px solid #fff;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+        }
+        .game-info-button {
+            position: fixed;
+            left: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 255, 0, 0.2);
+            border: 2px solid #00ff00;
+            border-radius: 12px;
+            padding: 0.75rem;
+            cursor: pointer;
+            z-index: 100;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+        }
+        .modal.show { display: flex; }
+
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+        }
+        .game-info-button {
+        position: fixed;
+        background: rgba(0, 255, 0, 0.2);
+        border: 2px solid #00ff00;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        z-index: 100;
+        padding: 0.75rem;
+    }
+
+    @media (min-width: 768px) {
+        .game-info-button {
+            left: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .game-info-button:hover {
+            background: rgba(0, 255, 0, 0.3);
+            transform: translateY(-50%) scale(1.1);
+        }
+    }
+
+    @media (max-width: 767px) {
+        .game-info-button {
+            left: 1rem;
+            top: 1rem;
+        }
+    }
+
+    .modal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.9);
+        z-index: 1000;
+    }
+
+    .modal.show {
+        display: flex;
+        animation: fadeIn 0.3s ease-out;
+    }
+
+
+
+    </style>
+</head>
+<body>
+    <button class="game-info-button" onclick="toggleGameInfo()">
+        <span class="text-2xl text-green-400">❔</span>
+    </button>
+
+    <div id="gameInfoModal" class="modal">
+        <div class="bg-black border-2 border-green-500 rounded-lg p-8 m-auto max-w-lg">
+            <h3 class="text-2xl text-green-400 mb-6">Level 8: Real Estate Investment</h3>
+            <div class="space-y-4 text-gray-300">
+                <p>🎯 Goal: Build a profitable property portfolio</p>
+                <div class="pl-4 space-y-2">
+                    <p>🏠 Down Payment: Min 20%</p>
+                    <p>📊 Debt-to-Income: Max 43%</p>
+                    <p>💰 ROI Target: Min 8%</p>
+                    <p>🏘️ Property Mix: Min 2 types</p>
+                </div>
+                <p class="text-yellow-400">Balance risk and returns!</p>
+            </div>
+            <button onclick="toggleGameInfo()" 
+                    class="mt-6 bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded">
+                Got it!
+            </button>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1 class="title text-4xl md:text-6xl text-center mb-12">LEVEL 8</h1>
+        <h2 class="text-2xl text-center text-green-400 mb-8">Real Estate Investment</h2>
+
+        <div class="bg-black bg-opacity-50 p-6 rounded-lg mb-8">
+            <div class="space-y-6">
+                <div>
+                    <label class="block text-green-300 mb-2">Down Payment (%)</label>
+                    <div class="slider-container">
+                        <input type="range" id="downPayment" min="0" max="40" value="0" class="slider w-full">
+                        <div class="flex justify-between mt-2">
+                            <span class="text-green-400"><span id="downPaymentValue">0</span>%</span>
+                            <span class="text-green-400">40%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-green-300 mb-2">Property Types</label>
+                    <div class="grid grid-cols-2 gap-4">
+                        <label class="flex items-center space-x-2">
+                            <input type="checkbox" id="residential" class="form-checkbox text-green-500">
+                            <span class="text-green-400">Residential</span>
+                        </label>
+                        <label class="flex items-center space-x-2">
+                            <input type="checkbox" id="commercial" class="form-checkbox text-green-500">
+                            <span class="text-green-400">Commercial</span>
+                        </label>
+                        <label class="flex items-center space-x-2">
+                            <input type="checkbox" id="rental" class="form-checkbox text-green-500">
+                            <span class="text-green-400">Rental</span>
+                        </label>
+                        <label class="flex items-center space-x-2">
+                            <input type="checkbox" id="reit" class="form-checkbox text-green-500">
+                            <span class="text-green-400">REIT</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-green-300 mb-2">Monthly Income ($)</label>
+                    <div class="slider-container">
+                        <input type="range" id="income" min="0" max="10000" step="100" value="0" class="slider w-full">
+                        <div class="flex justify-between mt-2">
+                            <span class="text-green-400">$<span id="incomeValue">0</span></span>
+                            <span class="text-green-400">$10,000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mb-8">
+            <p class="text-xl text-yellow-400">ROI: <span id="roi">0</span>%</p>
+            <p class="text-xl text-green-400 mt-2">DTI Ratio: <span id="dti">0</span>%</p>
+        </div>
+
+        <button id="submit-investment" class="w-full py-4 text-xl bg-green-600 hover:bg-green-700 rounded-lg">
+            SUBMIT INVESTMENT PLAN
+        </button>
+        <p id="message" class="mt-6 text-center text-yellow-400 text-xl"></p>
+    </div>
+
+    <script>
+        function toggleGameInfo() {
+            const modal = document.getElementById('gameInfoModal');
+            modal.classList.toggle('show');
+        }
+    </script>
+    <script src="../logic/level8.js"></script>
+    <script>
+        function toggleGameInfo() {
+            const modal = document.getElementById('gameInfoModal');
+            modal.classList.toggle('show');
+        }
+    </script>
+
+</body>
+</html>

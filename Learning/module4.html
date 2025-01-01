@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 4 - Emergency Fund Planning</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        body {
+            font-family: 'Press Start 2P', cursive;
+            background-color: #000;
+            background-image: 
+                linear-gradient(to right, rgba(0, 255, 0, 0.15) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 255, 0, 0.15) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+        .module-card {
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+        .module-card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="text-gray-300">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl text-green-400 mb-4">Module 4: Emergency Fund</h1>
+            <p class="text-xl text-gray-400">Financial Safety Net</p>
+        </header>
+
+        <!-- Main Content -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Emergency Fund Basics -->
+            <div class="module-card bg-black bg-opacity-50 p-6 rounded-lg">
+                <h2 class="text-2xl text-green-400 mb-4">Why Emergency Fund?</h2>
+                <div class="space-y-4">
+                    <div class="border border-green-600 p-4 rounded">
+                        <h3 class="text-xl text-green-400">Key Benefits</h3>
+                        <ul class="list-disc pl-6">
+                            <li>Financial security</li>
+                            <li>Stress reduction</li>
+                            <li>Avoid debt</li>
+                            <li>Peace of mind</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fund Size -->
+            <div class="module-card bg-black bg-opacity-50 p-6 rounded-lg">
+                <h2 class="text-2xl text-green-400 mb-4">Fund Size Guide</h2>
+                <div class="space-y-4">
+                    <div class="border border-green-600 p-4 rounded">
+                        <h3 class="text-xl text-green-400">3-6 Months</h3>
+                        <p>Basic expenses coverage</p>
+                    </div>
+                    <div class="border border-green-600 p-4 rounded">
+                        <h3 class="text-xl text-green-400">6-12 Months</h3>
+                        <p>Extended protection</p>
+                    </div>
+                    <div class="border border-green-600 p-4 rounded">
+                        <h3 class="text-xl text-green-400">Calculation</h3>
+                        <p>Monthly expenses × months needed</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Where to Keep -->
+            <div class="module-card bg-black bg-opacity-50 p-6 rounded-lg">
+                <h2 class="text-2xl text-green-400 mb-4">Where to Keep It?</h2>
+                <div class="space-y-4">
+                    <div class="border border-green-600 p-4 rounded">
+                        <h3 class="text-xl text-green-400">Savings Account</h3>
+                        <p>Easy access, low risk</p>
+                    </div>
+                    <div class="border border-green-600 p-4 rounded">
+                        <h3 class="text-xl text-green-400">Money Market</h3>
+                        <p>Better interest rates</p>
+                    </div>
+                    <div class="border border-green-600 p-4 rounded">
+                        <h3 class="text-xl text-green-400">Short-term CD</h3>
+                        <p>Higher yield, less liquid</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Common Emergencies -->
+            <div class="module-card bg-black bg-opacity-50 p-6 rounded-lg">
+                <h2 class="text-2xl text-green-400 mb-4">Common Emergencies</h2>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li>Job loss</li>
+                    <li>Medical expenses</li>
+                    <li>Car repairs</li>
+                    <li>Home repairs</li>
+                    <li>Unexpected travel</li>
+                </ul>
+            </div>
+
+            <!-- Building Strategy -->
+            <div class="module-card bg-black bg-opacity-50 p-6 rounded-lg">
+                <h2 class="text-2xl text-green-400 mb-4">Building Strategy</h2>
+                <div class="space-y-4">
+                    <ul class="list-disc pl-6">
+                        <li>Start small</li>
+                        <li>Automatic transfers</li>
+                        <li>Consistent additions</li>
+                        <li>Regular review</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Practice -->
+            <div class="module-card bg-black bg-opacity-50 p-6 rounded-lg">
+                <h2 class="text-2xl text-green-400 mb-4">Level 4 Preview</h2>
+                <p class="mb-4">Ready to build your emergency fund?</p>
+                <ul class="list-disc pl-6 space-y-2 mb-4">
+                    <li>Allocate $1000</li>
+                    <li>Choose safe investments</li>
+                    <li>Balance risk & liquidity</li>
+                </ul>
+                <a href="../levels/level4.html" 
+                   class="block text-center bg-green-600 hover:bg-green-700 
+                          text-white py-3 px-6 rounded-lg transition-all duration-300">
+                    Start Level 4 →
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-black bg-opacity-50 mt-16 py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-green-400 text-lg mb-4">About FinQuest</h3>
+                    <p class="text-gray-400">Interactive financial literacy through gamification.</p>
+                </div>
+                <div>
+                    <h3 class="text-green-400 text-lg mb-4">Learning Path</h3>
+                    <ul class="text-gray-400 space-y-2">
+                        <li>• Basic Financial Skills</li>
+                        <li>• Investment Strategies</li>
+                        <li>• Advanced Planning</li>
+                        <li>• Wealth Building</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-green-400 text-lg mb-4">Resources</h3>
+                    <ul class="text-gray-400 space-y-2">
+                        <li>• Financial Calculator</li>
+                        <li>• Glossary</li>
+                        <li>• Study Materials</li>
+                        <li>• FAQs</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-green-400 text-lg mb-4">Connect</h3>
+                    <ul class="text-gray-400 space-y-2">
+                        <li>• Support</li>
+                        <li>• Feedback</li>
+                        <li>• Social Media</li>
+                        <li>• Newsletter</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

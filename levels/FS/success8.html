@@ -1,0 +1,189 @@
+.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate Master & Game Complete!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        body {
+            font-family: 'Press Start 2P', cursive;
+            background-color: #000;
+            background-image: 
+                linear-gradient(to right, rgba(0, 255, 0, 0.15) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 255, 0, 0.15) 1px, transparent 1px);
+            background-size: 50px 50px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+        }
+        .modal.show { display: flex; }
+        .certificate {
+            background: rgba(0, 255, 0, 0.1);
+            border: 3px solid #00ff00;
+            box-shadow: 0 0 30px rgba(0, 255, 0, 0.3);
+            padding: 2rem;
+            max-width: 800px;
+            margin: 2rem;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        @keyframes glow {
+            from { box-shadow: 0 0 20px rgba(0, 255, 0, 0.3); }
+            to { box-shadow: 0 0 40px rgba(0, 255, 0, 0.5); }
+        }
+
+        .certificate {
+        background: rgba(0, 255, 0, 0.1);
+        border: 3px solid #00ff00;
+        box-shadow: 0 0 30px rgba(0, 255, 0, 0.3);
+        padding: 3rem;
+        width: 90%;
+        max-width: 900px;
+        margin: 2rem auto;
+        animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    .certificate-content {
+        max-width: 800px;
+        margin: 0 auto;
+        word-wrap: break-word;
+    }
+
+    .certificate-title {
+        font-size: clamp(2rem, 5vw, 3rem);
+        line-height: 1.2;
+        margin-bottom: 2rem;
+    }
+
+    .certificate-name {
+        font-size: clamp(1.5rem, 4vw, 2.5rem);
+        padding: 1rem;
+        margin: 1rem 0;
+        border-bottom: 2px solid rgba(0, 255, 0, 0.3);
+        display: inline-block;
+    }
+
+    .certificate-text {
+        font-size: clamp(1rem, 2vw, 1.25rem);
+        line-height: 1.6;
+    }
+
+    @media (max-width: 640px) {
+        .certificate {
+            padding: 1.5rem;
+        }
+    }
+
+    </style>
+</head>
+<body>
+    <!-- Level 8 Success Message -->
+    <div class="text-center px-4" id="levelSuccess">
+        <h1 class="text-4xl md:text-6xl text-green-400 mb-8">REAL ESTATE MASTER!</h1>
+        <div class="space-y-4 text-xl text-green-400 mb-12">
+            <p>🏠 Property Portfolio Optimized</p>
+            <p>💰 Investment Strategy Balanced</p>
+            <p>📈 ROI Calculations Perfect</p>
+            <p>🎯 Market Analysis Complete</p>
+        </div>
+        <button onclick="showNameInput()" 
+                class="bg-green-600 hover:bg-green-700 text-white py-4 px-8 rounded-lg text-lg">
+            🎓 Get Your Certificate
+        </button>
+    </div>
+
+    <!-- Name Input Modal -->
+    <div id="nameModal" class="modal">
+        <div class="bg-black border-2 border-green-500 rounded-lg p-8 m-auto max-w-lg">
+            <h3 class="text-2xl text-green-400 mb-6">Enter Your Name</h3>
+            <input type="text" id="nameInput" 
+                   class="bg-gray-800 text-green-400 px-4 py-2 rounded w-full mb-6"
+                   placeholder="Your Name">
+            <button onclick="generateCertificate()" 
+                    class="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded">
+                Generate Certificate
+            </button>
+        </div>
+    </div>
+
+    <!-- Certificate View -->
+ <div id="certificateView" class="modal">
+    <div class="certificate rounded-lg" id="certificateContent">
+        <div class="certificate-content text-center">
+            <h1 class="certificate-title text-green-400">
+                🏆 CONGRATULATIONS!
+            </h1>
+            
+            <div class="space-y-4">
+                <p class="certificate-text text-green-400">Certificate of Achievement</p>
+                <p class="text-gray-400">This certifies that</p>
+                <p class="certificate-name text-yellow-400" id="playerName"></p>
+                <p class="text-gray-400">has successfully completed</p>
+                <p class="certificate-text text-green-400 my-4">
+                    FinQuest: Financial Literacy Program
+                </p>
+                <div class="mt-8 space-y-2">
+                    <p class="text-sm text-gray-400">Mastering:</p>
+                    <p class="text-sm text-gray-400">
+                        Budgeting • Savings • Investments • Taxes<br>
+                        Debt Management • Retirement Planning<br>
+                        Real Estate Investment
+                    </p>
+                </div>
+                <p class="text-sm text-gray-400 mt-6">
+                    Completed on: <span id="certDate"></span>
+                </p>
+            </div>
+
+            <div class="mt-8 space-x-4">
+                <button onclick="downloadCertificate()" 
+                        class="bg-green-600 hover:bg-green-700 text-white py-3 px-6 rounded-lg">
+                    💾 Download
+                </button>
+                <a href="../../index.html" 
+                   class="inline-block bg-green-600 hover:bg-green-700 text-white py-3 px-6 rounded-lg">
+                    🏠 Home
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script>
+        function showNameInput() {
+            document.getElementById('nameModal').classList.add('show');
+        }
+
+        function generateCertificate() {
+            const name = document.getElementById('nameInput').value;
+            if (!name) return;
+            
+            document.getElementById('playerName').textContent = name;
+            document.getElementById('certDate').textContent = new Date().toLocaleDateString();
+            document.getElementById('nameModal').classList.remove('show');
+            document.getElementById('certificateView').classList.add('show');
+            document.getElementById('levelSuccess').style.display = 'none';
+        }
+
+        function downloadCertificate() {
+            html2canvas(document.getElementById('certificateContent')).then(canvas => {
+                const link = document.createElement('a');
+                link.download = 'FinQuest-Certificate.png';
+                link.href = canvas.toDataURL();
+                link.click();
+            });
+        }
+    </script>
+</body>
+</html>

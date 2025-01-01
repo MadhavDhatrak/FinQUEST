@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 6 - Debt Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        body {
+            font-family: 'Press Start 2P', cursive;
+            background-color: #000;
+            background-image: 
+                linear-gradient(to right, rgba(0, 255, 0, 0.15) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 255, 0, 0.15) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+        .module-card {
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+        .module-card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="text-gray-300">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl text-green-400 mb-4">Module 6: Debt Management</h1>
+            <p class="text-xl text-gray-400">Master Debt Repayment Strategy</p>
+        </header>
+
+        <!-- Main Content -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Debt Basics -->
+            <div class="module-card bg-black bg-opacity-50 p-6 rounded-lg">
+                <h2 class="text-2xl text-green-400 mb-4">Understanding Debt</h2>
+                <div class="space-y-4">
+                    <div class="border border-green-600 p-4 rounded">
+                        <h3 class="text-xl text-green-400">Key Concepts</h3>
+                        <ul class="list-disc pl-6">
+                            <li>Principal</li>
+                            <li>Interest Rate (APR)</li>
+                            <li>Minimum Payments</li>
+                            <li>Total Balance</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Types of Debt -->
+            <div class="module-card bg-black bg-opacity-50 p-6 rounded-lg">
+                <h2 class="text-2xl text-green-400 mb-4">Types of Debt</h2>
+                <div class="space-y-4">
+                    <div class="border border-green-600 p-4 rounded">
+                        <h3 class="text-xl text-green-400">Credit Cards 💳</h3>
+                        <p>High APR (20%)</p>
+                    </div>
+                    <div class="border border-green-600 p-4 rounded">
+                        <h3 class="text-xl text-green-400">Student Loans 🎓</h3>
+                        <p>Lower APR (5%)</p>
+                    </div>
+                    <div class="border border-green-600 p-4 rounded">
+                        <h3 class="text-xl text-green-400">Personal Loans 🏦</h3>
+                        <p>Medium APR (10%)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DTI Ratio -->
+            <div class="module-card bg-black bg-opacity-50 p-6 rounded-lg">
+                <h2 class="text-2xl text-green-400 mb-4">DTI Ratio</h2>
+                <div class="space-y-4">
+                    <div class="border border-green-600 p-4 rounded">
+                        <h3 class="text-xl text-green-400">What is DTI?</h3>
+                        <p class="mb-2">Debt-to-Income Ratio:</p>
+                        <ul class="list-disc pl-6">
+                            <li>Monthly Debt / Monthly Income</li>
+                            <li>Keep below 36%</li>
+                            <li>Lower is better</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Repayment Strategies -->
+            <div class="module-card bg-black bg-opacity-50 p-6 rounded-lg">
+                <h2 class="text-2xl text-green-400 mb-4">Repayment Methods</h2>
+                <div class="space-y-4">
+                    <div class="border border-green-600 p-4 rounded">
+                        <h3 class="text-xl text-green-400">Avalanche Method</h3>
+                        <p>Target highest APR first</p>
+                    </div>
+                    <div class="border border-green-600 p-4 rounded">
+                        <h3 class="text-xl text-green-400">Snowball Method</h3>
+                        <p>Target smallest balance first</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Level 6 Preview -->
+            <div class="module-card bg-black bg-opacity-50 p-6 rounded-lg">
+                <h2 class="text-2xl text-green-400 mb-4">Level 6 Challenge</h2>
+                <div class="space-y-4">
+                    <p>Monthly Budget: $2000</p>
+                    <ul class="list-disc pl-6">
+                        <li>Credit Card: Min $200</li>
+                        <li>Student Loan: Min $150</li>
+                        <li>Personal Loan: Min $300</li>
+                        <li>Keep DTI below 30%</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Practice -->
+            <div class="module-card bg-black bg-opacity-50 p-6 rounded-lg">
+                <h2 class="text-2xl text-green-400 mb-4">Start Managing Debt</h2>
+                <p class="mb-4">Ready to tackle your debts?</p>
+                <a href="../levels/level6.html" 
+                   class="block text-center bg-green-600 hover:bg-green-700 
+                          text-white py-3 px-6 rounded-lg transition-all duration-300">
+                    Start Level 6 →
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-black bg-opacity-50 mt-16 py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-green-400 text-lg mb-4">About FinQuest</h3>
+                    <p class="text-gray-400">Interactive financial literacy through gamification.</p>
+                </div>
+                <div>
+                    <h3 class="text-green-400 text-lg mb-4">Learning Path</h3>
+                    <ul class="text-gray-400 space-y-2">
+                        <li>• Basic Financial Skills</li>
+                        <li>• Investment Strategies</li>
+                        <li>• Advanced Planning</li>
+                        <li>• Wealth Building</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-green-400 text-lg mb-4">Resources</h3>
+                    <ul class="text-gray-400 space-y-2">
+                        <li>• Financial Calculator</li>
+                        <li>• Glossary</li>
+                        <li>• Study Materials</li>
+                        <li>• FAQs</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-green-400 text-lg mb-4">Connect</h3>
+                    <ul class="text-gray-400 space-y-2">
+                        <li>• Support</li>
+                        <li>• Feedback</li>
+                        <li>• Social Media</li>
+                        <li>• Newsletter</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

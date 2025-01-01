@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debt Management Failed</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        body {
+            font-family: 'Press Start 2P', cursive;
+            background-color: #000;
+            background-image: 
+                linear-gradient(to right, rgba(255, 0, 0, 0.15) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 0, 0, 0.15) 1px, transparent 1px);
+            background-size: 50px 50px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .title {
+            color: #ff0000;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+            animation: glowRed 1.5s ease-in-out infinite alternate;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+        }
+        .modal.show { display: flex; }
+        @keyframes glowRed {
+            from { text-shadow: 0 0 10px #ff0000; }
+            to { text-shadow: 0 0 20px #ff0000; }
+        }
+    </style>
+</head>
+<body>
+    <div class="text-center px-4">
+        <h1 class="title text-4xl md:text-6xl mb-8">DEBT PLAN FAILED!</h1>
+        <p class="text-red-400 text-xl mb-8">Your debt management needs work!</p>
+        
+        <button onclick="toggleTips()" 
+                class="mb-8 bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded">
+            💡 Debt Management Tips
+        </button>
+
+        <div id="tipsModal" class="modal">
+            <div class="bg-black border-2 border-red-500 rounded-lg p-8 m-auto max-w-lg">
+                <h3 class="text-2xl text-red-400 mb-6">Debt Management Strategies</h3>
+                <ul class="space-y-4 text-gray-300 text-left">
+                    <li>💳 Pay more than minimum on high-APR debts</li>
+                    <li>📊 Keep DTI ratio below 36%</li>
+                    <li>🎯 Focus on credit card debt first</li>
+                    <li>💰 Stay within monthly budget</li>
+                    <li>📈 Consider debt avalanche method</li>
+                </ul>
+                <button onclick="toggleTips()" 
+                        class="mt-6 bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded">
+                    Got it!
+                </button>
+            </div>
+        </div>
+
+        <a href="../level6.html" 
+           class="inline-block bg-red-600 hover:bg-red-700 text-white 
+                  py-4 px-8 rounded-lg text-lg transition-all duration-300">
+            TRY AGAIN
+        </a>
+    </div>
+
+    <script>
+        function toggleTips() {
+            document.getElementById('tipsModal').classList.toggle('show');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 5 - Tax Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        body {
+            font-family: 'Press Start 2P', cursive;
+            background-color: #000;
+            background-image: 
+                linear-gradient(to right, rgba(0, 255, 0, 0.15) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 255, 0, 0.15) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+        .module-card {
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+        .module-card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="text-gray-300">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl text-green-400 mb-4">Module 5: Tax Management</h1>
+            <p class="text-xl text-gray-400">Optimize Your Tax Strategy</p>
+        </header>
+
+        <!-- Main Content -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Tax Basics -->
+            <div class="module-card bg-black bg-opacity-50 p-6 rounded-lg">
+                <h2 class="text-2xl text-green-400 mb-4">Tax Fundamentals</h2>
+                <div class="space-y-4">
+                    <div class="border border-green-600 p-4 rounded">
+                        <h3 class="text-xl text-green-400">Key Concepts</h3>
+                        <ul class="list-disc pl-6">
+                            <li>Taxable Income</li>
+                            <li>Tax Brackets</li>
+                            <li>Deductions</li>
+                            <li>Credits</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tax Brackets -->
+            <div class="module-card bg-black bg-opacity-50 p-6 rounded-lg">
+                <h2 class="text-2xl text-green-400 mb-4">Tax Brackets</h2>
+                <div class="space-y-4">
+                    <div class="border border-green-600 p-4 rounded">
+                        <h3 class="text-xl text-green-400">Progressive System</h3>
+                        <ul class="list-disc pl-6">
+                            <li>10% - Up to $9,950</li>
+                            <li>12% - Up to $40,525</li>
+                            <li>22% - Up to $86,375</li>
+                            <li>24% - Up to $164,925</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Deductions -->
+            <div class="module-card bg-black bg-opacity-50 p-6 rounded-lg">
+                <h2 class="text-2xl text-green-400 mb-4">Common Deductions</h2>
+                <div class="space-y-4">
+                    <div class="border border-green-600 p-4 rounded">
+                        <h3 class="text-xl text-green-400">401(k) 📊</h3>
+                        <p>Pre-tax retirement savings</p>
+                    </div>
+                    <div class="border border-green-600 p-4 rounded">
+                        <h3 class="text-xl text-green-400">Health Insurance 🏥</h3>
+                        <p>Premium payments</p>
+                    </div>
+                    <div class="border border-green-600 p-4 rounded">
+                        <h3 class="text-xl text-green-400">Mortgage Interest 🏠</h3>
+                        <p>Home loan interest</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tax Strategy -->
+            <div class="module-card bg-black bg-opacity-50 p-6 rounded-lg">
+                <h2 class="text-2xl text-green-400 mb-4">Tax Strategy</h2>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li>Maximize retirement contributions</li>
+                    <li>Track all eligible deductions</li>
+                    <li>Plan across tax years</li>
+                    <li>Consider tax-advantaged accounts</li>
+                </ul>
+            </div>
+
+            <!-- Level 5 Preview -->
+            <div class="module-card bg-black bg-opacity-50 p-6 rounded-lg">
+                <h2 class="text-2xl text-green-400 mb-4">Level 5 Challenge</h2>
+                <div class="space-y-4">
+                    <p>Manage $100,000 annual income:</p>
+                    <ul class="list-disc pl-6">
+                        <li>401(k): Min $10,000</li>
+                        <li>Health Insurance: Up to $5,000</li>
+                        <li>Mortgage Interest: Up to $10,000</li>
+                        <li>Target: Tax rate below 20%</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Practice -->
+            <div class="module-card bg-black bg-opacity-50 p-6 rounded-lg">
+                <h2 class="text-2xl text-green-400 mb-4">Start Tax Planning</h2>
+                <p class="mb-4">Ready to optimize your taxes?</p>
+                <a href="../levels/level5.html" 
+                   class="block text-center bg-green-600 hover:bg-green-700 
+                          text-white py-3 px-6 rounded-lg transition-all duration-300">
+                    Start Level 5 →
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-black bg-opacity-50 mt-16 py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-green-400 text-lg mb-4">About FinQuest</h3>
+                    <p class="text-gray-400">Interactive financial literacy through gamification.</p>
+                </div>
+                <div>
+                    <h3 class="text-green-400 text-lg mb-4">Learning Path</h3>
+                    <ul class="text-gray-400 space-y-2">
+                        <li>• Basic Financial Skills</li>
+                        <li>• Investment Strategies</li>
+                        <li>• Advanced Planning</li>
+                        <li>• Wealth Building</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-green-400 text-lg mb-4">Resources</h3>
+                    <ul class="text-gray-400 space-y-2">
+                        <li>• Financial Calculator</li>
+                        <li>• Glossary</li>
+                        <li>• Study Materials</li>
+                        <li>• FAQs</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-green-400 text-lg mb-4">Connect</h3>
+                    <ul class="text-gray-400 space-y-2">
+                        <li>• Support</li>
+                        <li>• Feedback</li>
+                        <li>• Social Media</li>
+                        <li>• Newsletter</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

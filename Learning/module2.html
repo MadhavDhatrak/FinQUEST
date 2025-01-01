@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 2 - Smart Savings Strategy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        body {
+            font-family: 'Press Start 2P', cursive;
+            background-color: #000;
+            background-image: 
+                linear-gradient(to right, rgba(0, 255, 0, 0.15) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 255, 0, 0.15) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+        .module-card {
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+        .module-card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="text-gray-300">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl text-green-400 mb-4">Module 2: Smart Savings</h1>
+            <p class="text-xl text-gray-400">Building Your Financial Safety Net</p>
+        </header>
+
+        <!-- Main Content -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- What is Smart Saving -->
+            <div class="module-card bg-black bg-opacity-50 p-6 rounded-lg">
+                <h2 class="text-2xl text-green-400 mb-4">Smart Saving Basics</h2>
+                <div class="space-y-4">
+                    <p class="mb-4">Why save money?</p>
+                    <ul class="list-disc pl-6 space-y-2">
+                        <li>Emergency preparedness</li>
+                        <li>Future goals</li>
+                        <li>Financial security</li>
+                        <li>Peace of mind</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Types of Savings -->
+            <div class="module-card bg-black bg-opacity-50 p-6 rounded-lg">
+                <h2 class="text-2xl text-green-400 mb-4">Types of Savings</h2>
+                <div class="space-y-4">
+                    <div class="border border-green-600 p-4 rounded">
+                        <h3 class="text-xl text-green-400 mb-2">Emergency Fund</h3>
+                        <p>3-6 months of expenses</p>
+                    </div>
+                    <div class="border border-green-600 p-4 rounded">
+                        <h3 class="text-xl text-green-400 mb-2">Goal-Based</h3>
+                        <p>Vacation, Home, etc.</p>
+                    </div>
+                    <div class="border border-green-600 p-4 rounded">
+                        <h3 class="text-xl text-green-400 mb-2">Retirement</h3>
+                        <p>Long-term growth</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Savings Strategies -->
+            <div class="module-card bg-black bg-opacity-50 p-6 rounded-lg">
+                <h2 class="text-2xl text-green-400 mb-4">Saving Strategies</h2>
+                <div class="space-y-4">
+                    <div class="border border-green-600 p-4 rounded">
+                        <h3 class="text-xl text-green-400">Pay Yourself First</h3>
+                        <p>Save before spending</p>
+                    </div>
+                    <div class="border border-green-600 p-4 rounded">
+                        <h3 class="text-xl text-green-400">Automate</h3>
+                        <p>Set up auto-transfers</p>
+                    </div>
+                    <div class="border border-green-600 p-4 rounded">
+                        <h3 class="text-xl text-green-400">Track Progress</h3>
+                        <p>Monitor your goals</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Level 2 Preview -->
+            <div class="module-card bg-black bg-opacity-50 p-6 rounded-lg">
+                <h2 class="text-2xl text-green-400 mb-4">Level 2 Challenge</h2>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li>Allocate $500 total</li>
+                    <li>Emergency: Min $200</li>
+                    <li>Investment: Min $150</li>
+                    <li>Vacation: Min $50</li>
+                </ul>
+            </div>
+
+            <!-- Success Tips -->
+            <div class="module-card bg-black bg-opacity-50 p-6 rounded-lg">
+                <h2 class="text-2xl text-green-400 mb-4">Tips for Success</h2>
+                <div class="space-y-4">
+                    <div class="border border-green-600 p-4 rounded">
+                        <h3 class="text-xl text-green-400">Key Rules</h3>
+                        <ul class="list-disc pl-6">
+                            <li>Start small</li>
+                            <li>Be consistent</li>
+                            <li>Stay committed</li>
+                            <li>Review regularly</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Practice -->
+            <div class="module-card bg-black bg-opacity-50 p-6 rounded-lg">
+                <h2 class="text-2xl text-green-400 mb-4">Practice Now</h2>
+                <p class="mb-4">Ready to build your savings?</p>
+                <a href="../levels/level2.html" 
+                   class="block text-center bg-green-600 hover:bg-green-700 
+                          text-white py-3 px-6 rounded-lg transition-all duration-300">
+                    Start Level 2 →
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-black bg-opacity-50 mt-16 py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-green-400 text-lg mb-4">About FinQuest</h3>
+                    <p class="text-gray-400">Interactive financial literacy through gamification.</p>
+                </div>
+                <div>
+                    <h3 class="text-green-400 text-lg mb-4">Learning Path</h3>
+                    <ul class="text-gray-400 space-y-2">
+                        <li>• Basic Financial Skills</li>
+                        <li>• Investment Strategies</li>
+                        <li>• Advanced Planning</li>
+                        <li>• Wealth Building</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-green-400 text-lg mb-4">Resources</h3>
+                    <ul class="text-gray-400 space-y-2">
+                        <li>• Financial Calculator</li>
+                        <li>• Glossary</li>
+                        <li>• Study Materials</li>
+                        <li>• FAQs</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-green-400 text-lg mb-4">Connect</h3>
+                    <ul class="text-gray-400 space-y-2">
+                        <li>• Support</li>
+                        <li>• Feedback</li>
+                        <li>• Social Media</li>
+                        <li>• Newsletter</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

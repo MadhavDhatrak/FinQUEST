@@ -1,0 +1,187 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 6 - Debt Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        body {
+            font-family: 'Press Start 2P', cursive;
+            background-color: #000;
+            background-image: 
+                linear-gradient(to right, rgba(0, 255, 0, 0.15) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 255, 0, 0.15) 1px, transparent 1px);
+            background-size: 50px 50px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container { max-width: 800px; padding: 1.5rem; }
+        .title {
+            color: #00ff00;
+            text-shadow: 0 0 10px rgba(0, 255, 0, 0.7);
+            animation: glow 1.5s ease-in-out infinite alternate;
+        }
+        .slider-container { position: relative; padding: 1rem 0; }
+        .slider {
+            -webkit-appearance: none;
+            height: 16px;
+            background: linear-gradient(90deg, #00ff00 0%, #006400 100%);
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+            outline: none;
+        }
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 32px;
+            height: 32px;
+            background: #00ff00;
+            border: 3px solid #fff;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+        }
+        .game-info-button {
+        position: fixed;
+        background: rgba(0, 255, 0, 0.2);
+        border: 2px solid #00ff00;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        z-index: 100;
+        padding: 0.75rem;
+    }
+
+    @media (min-width: 768px) {
+        .game-info-button {
+            left: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .game-info-button:hover {
+            background: rgba(0, 255, 0, 0.3);
+            transform: translateY(-50%) scale(1.1);
+        }
+    }
+
+    @media (max-width: 767px) {
+        .game-info-button {
+            left: 1rem;
+            top: 1rem;
+        }
+    }
+
+    .modal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.9);
+        z-index: 1000;
+    }
+
+    .modal.show {
+        display: flex;
+        animation: fadeIn 0.3s ease-out;
+    }
+
+    </style>
+</head>
+<body>
+    <button class="game-info-button" onclick="toggleGameInfo()">
+        <span class="text-2xl text-green-400">❔</span>
+    </button>
+
+    <div id="gameInfoModal" class="modal">
+        <div class="bg-black border-2 border-green-500 rounded-lg p-8 m-auto max-w-lg">
+            <h3 class="text-2xl text-green-400 mb-6">Level 6: Debt Management</h3>
+            <div class="space-y-4 text-gray-300">
+                <p>🎯 Goal: Optimize debt repayment with $2000 monthly budget</p>
+                <div class="pl-4 space-y-2">
+                    <p>💳 Credit Card: 20% APR</p>
+                    <p>🎓 Student Loan: 5% APR</p>
+                    <p>🏦 Personal Loan: 10% APR</p>
+                    <p>📊 Keep DTI ratio below 30%</p>
+                </div>
+                <p class="text-yellow-400">Allocate payments wisely!</p>
+            </div>
+            <button onclick="toggleGameInfo()" 
+                    class="mt-6 bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded">
+                Got it!
+            </button>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1 class="title text-4xl md:text-6xl text-center mb-12">LEVEL 6</h1>
+        <h2 class="text-2xl text-center text-green-400 mb-8">Debt Management</h2>
+
+        <div class="text-center mb-8">
+            <span class="text-2xl text-yellow-400">Monthly Budget: $<span id="remaining">2000</span></span>
+        </div>
+
+        <div class="space-y-12 mb-12">
+            <div>
+                <label class="block mb-6 text-xl text-green-300">💳 Credit Card Payment</label>
+                <div class="slider-container">
+                    <input type="range" id="creditCard" min="0" max="1000" value="0" class="slider w-full">
+                    <div class="flex justify-between mt-4">
+                        <span class="text-green-400">$<span id="creditCardValue">0</span></span>
+                        <span class="text-green-400">Balance: $5000</span>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <label class="block mb-6 text-xl text-green-300">🎓 Student Loan Payment</label>
+                <div class="slider-container">
+                    <input type="range" id="studentLoan" min="0" max="800" value="0" class="slider w-full">
+                    <div class="flex justify-between mt-4">
+                        <span class="text-green-400">$<span id="studentLoanValue">0</span></span>
+                        <span class="text-green-400">Balance: $20000</span>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <label class="block mb-6 text-xl text-green-300">🏦 Personal Loan Payment</label>
+                <div class="slider-container">
+                    <input type="range" id="personalLoan" min="0" max="600" value="0" class="slider w-full">
+                    <div class="flex justify-between mt-4">
+                        <span class="text-green-400">$<span id="personalLoanValue">0</span></span>
+                        <span class="text-green-400">Balance: $10000</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mb-8">
+            <p class="text-xl text-green-400">DTI Ratio: <span id="dtiRatio">0</span>%</p>
+        </div>
+
+        <button id="submit-plan" 
+                class="w-full py-4 text-xl bg-green-600 hover:bg-green-700 rounded-lg">
+            SUBMIT DEBT PLAN
+        </button>
+        <p id="message" class="mt-6 text-center text-yellow-400 text-xl"></p>
+    </div>
+    <script src="../logic/level6.js"></script>
+    <script>
+        function toggleGameInfo() {
+            const modal = document.getElementById('gameInfoModal');
+            modal.classList.toggle('show');
+        }
+    </script>
+
+</body>
+</html>
