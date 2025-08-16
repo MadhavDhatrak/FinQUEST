@@ -86,5 +86,5 @@
 - **HTML5**
 - **CSS3** (Tailwind CSS)
 - **JavaScript**
-- **Google Fonts** (Press Start 2P)
+
 
